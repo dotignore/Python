@@ -1,0 +1,239 @@
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+003 Виртуальное окружение venv.mp4
+
+python --version
+
+cd C:\Users\User\Documents\django
+	python -m venv venv
+
+C:\Users\User\Documents\django>venv\Scripts\
+	activate
+
+C:\Users\User\Documents\django\venv\Scripts>
+	python -m pip install Django
+
+C:\Users\User\Documents\django>
+	django-admin startproject landingpagewebsite
+
+rename landingpagewebsite to landingpagewebsite_root
+
+run PyCharm
+pic_01.png
+open project
+
+cd C:\Users\User\Documents\django\landingpagewebsite_root
+C:\Users\User\Documents\django\landingpagewebsite_root>python manage.py runserver
+
+open  http://127.0.0.1:8000/
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+004 Система контроля версий GIT и github
+
+pic_02.png
+
+# Запуск виртуального оточення
+cd c:\....\Scripts
+activate
+
+# Запуск візладочного сервера
+cd c:\....\landingpagesebsite_root
+python.py manager.py runserver
+
+add repo to 
+pic_03.png
+
+git ignore django pycharm
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+005 Заметка Работа с GitHub.mp4
+006 Структура проекта Django.mp4
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+007 Первая web страница, работа с views.py.mp4
+
+Create file views.py in landingpagewebsite_root
+
+from django.http import HttpResponse
+-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+urls.py
+
+from .views import first_page
+
+urlpatterns = [    path('', first_page),]
+
+-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+CHANGE views.py
+      __________
+
+from django.http import HttpResponsefrom django.shortcuts import renderdef first_page(request):    a = '<h1>Hello world</h1>'    text = 'NEW TEXT'    return render(request, './index.html',{        'a':a,        'text':text    })
+
+
+
+	settings.py
+       _____________
+ADD
+'DIRS': [templates],
+
+
+
+
+CREATE file in FOLDER 
+landingpagewebsite_root\templates -> index.html
+				    ____________
+
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <title>Title</title></head><body><h1> FisrPage </h1>{{ a }}<h1> {{text}} </h1></body></html>
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+008 Приложения и модели файл models.py.mp4
+
+C:\Users\User\Documents\django>venv\Scripts\activate
+(venv) C:\Users\User\Documents\django\landingpagewebsite_root>
+	python manage.py startapp crm
+
+
+DB DB DB DB DB
+______________
+
+python manage.py startapp crm
+
+	models.py
+      _____________
+
+class Order(models.Model):    order_dt = models.DateTimeField(auto_now=True)    order_name = models.CharField(max_length=200)    order_phobe = models.CharField(max_length=200)
+
+
+(venv) C:\Users\User\Documents\Django\landingpagewebsite_root>
+	python manage.py makemigrations
+
+
+(venv) C:\Users\User\Documents\django\landingpagewebsite_root>
+	python manage.py migrate
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+009 QuerySet работа с БД в Shell.mp4
+
+(venv) C:\Users\User\Documents\django\landingpagewebsite_root>
+	python manage.py shell
+
+>>> from crm.models import Order
+>>> n = Order(order_name = 'Taras', order_phone = '+380123456789')
+>>> n.save()
+>>> from django.db import connection
+>>> connection.queries
+>>> n2 = Order(order_name = 'Vasyl', order_phone = '+389876543210')
+>>> connection.queries
+>>> n.save()
+>>> connection.queries
+>>> n3 = Order.objects.create(order_name = 'Semen', order_phone = '+3801234543210')
+>>> Order.objects.all()
+>>> Order.objects.filter(order_name = 'Semen')
+>>> Order.objects.order_by('id')
+>>> Order.objects.order_by('-id')
+>>> Order.objects.get(pk=1)
+>>> order1 = Order.objects.get(pk=1)
+>>> order1.order_phone
+>>> order1.order_dt
+>>> order1.order_phone = '1111111111'
+>>> order1.save()
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+010 Админ-панель Django.mp4
+
+(venv) (base) C:\Users\User\Documents\django\landingpagewebsite_root>
+	python manage.py createsuperuser
+
+Username (leave blank to use 'user'): wwwEmail address: qwe@qwe.uaPassword: 123465Password (again): 1223465This password is too short. It must contain at least 8 characters.This password is too common.This password is entirely numeric.Bypass password validation and create user anyway? [y/N]: ySuperuser created successfully.
+
+
+(venv) (base) C:\Users\User\Documents\django\landingpagewebsite_root>
+	python manage.py runserver
+
+http://127.0.0.1:8000/admin/
+
+
+
+	admin.py
+       _________
+
+from django.contrib import adminfrom .models import Orderadmin.site.register(Order)
+
+
+	models.py
+      ____________
+
+from django.db import models# Create your models here.class Order(models.Model):    order_dt = models.DateTimeField(auto_now=True)    order_name = models.CharField(max_length=200, verbose_name='NAME')    order_phone = models.CharField(max_length=200, verbose_name='PHONE')    def __str__(self):        return self.order_name    class Meta:        verbose_name = 'Order_'        verbose_name_plural = '_Orders'
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+011 Шаблонный тег for и if else.mp4
+
+	views.py
+      ____________
+
+from django.shortcuts import renderfrom .models import Order# Create your views here.def first_page(request):    object_list = Order.objects.all()    return render(request, './index.html', { 'object_list': object_list })
+
+	urls.py
+      ___________
+
+from django.contrib import adminfrom django.urls import path# delete from .del_views import first_pagefrom crm import viewsurlpatterns = [    path('admin/', admin.site.urls),    # delete     path('', first_page),    path('', views.first_page)]
+
+
+	index.html
+       ____________
+
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <title>Title</title></head><body>{% if object_list %}<table border="1">    <tr>        <th>ID</th>        <th>DATE</th>        <th>NAME</th>        <th>PHONE</th>    </tr><!--    <h1> {{ object_list }} </h1>-->{% for obj in object_list %}    <tr>        <th>{{ obj.id }}</th>        <th>{{ obj.order_dt }}</th>        <th>{{ obj.order_name }}</th>        <th>{{ obj.order_phone }}</th>    </tr>{% endfor %}</table>{% else %}is empty{% endif %}</body></html>
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+012 Формы в Django GET POST запросы.mp4
+
+[watch video]
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+012 Формы в Django GET POST запросы.mp4
+
+[watch video]
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+013 Формы как класс Django.mp4
+
+[watch video]
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+015 Статические и media директории.mp4
+
+[watch video]
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
