@@ -57,21 +57,33 @@ git ignore django pycharm
 
 Create file views.py in landingpagewebsite_root
 
-from django.http import HttpResponse
+from django.http import HttpResponse
+
 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 urls.py
 
 from .views import first_page
 
-urlpatterns = [    path('', first_page),]
+urlpatterns = [
+    path('', first_page),
+]
 
 -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
 CHANGE views.py
       __________
 
-from django.http import HttpResponsefrom django.shortcuts import renderdef first_page(request):    a = '<h1>Hello world</h1>'    text = 'NEW TEXT'    return render(request, './index.html',{        'a':a,        'text':text    })
+from django.http import HttpResponse
+from django.shortcuts import render
+
+def first_page(request):
+    a = '<h1>Hello world</h1>'
+    text = 'NEW TEXT'
+    return render(request, './index.html',{
+        'a':a,
+        'text':text
+    })
 
 
 
@@ -87,7 +99,20 @@ CREATE file in FOLDER
 landingpagewebsite_root\templates -> index.html
 				    ____________
 
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <title>Title</title></head><body><h1> FisrPage </h1>{{ a }}<h1> {{text}} </h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1> FisrPage </h1>
+{{ a }}
+<h1> {{text}} </h1>
+
+</body>
+</html>
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -107,7 +132,10 @@ python manage.py startapp crm
 	models.py
       _____________
 
-class Order(models.Model):    order_dt = models.DateTimeField(auto_now=True)    order_name = models.CharField(max_length=200)    order_phobe = models.CharField(max_length=200)
+class Order(models.Model):
+    order_dt = models.DateTimeField(auto_now=True)
+    order_name = models.CharField(max_length=200)
+    order_phone = models.CharField(max_length=200)
 
 
 (venv) C:\Users\User\Documents\Django\landingpagewebsite_root>
@@ -152,7 +180,15 @@ class Order(models.Model):    order_dt = models.DateTimeField(auto_now=True)  
 (venv) (base) C:\Users\User\Documents\django\landingpagewebsite_root>
 	python manage.py createsuperuser
 
-Username (leave blank to use 'user'): wwwEmail address: qwe@qwe.uaPassword: 123465Password (again): 1223465This password is too short. It must contain at least 8 characters.This password is too common.This password is entirely numeric.Bypass password validation and create user anyway? [y/N]: ySuperuser created successfully.
+Username (leave blank to use 'user'): www
+Email address: qwe@qwe.ua
+Password: 123465
+Password (again): 1223465
+This password is too short. It must contain at least 8 characters.
+This password is too common.
+This password is entirely numeric.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
 
 
 (venv) (base) C:\Users\User\Documents\django\landingpagewebsite_root>
@@ -165,13 +201,30 @@ http://127.0.0.1:8000/admin/
 	admin.py
        _________
 
-from django.contrib import adminfrom .models import Orderadmin.site.register(Order)
+from django.contrib import admin
+from .models import Order
+
+admin.site.register(Order)
 
 
 	models.py
       ____________
 
-from django.db import models# Create your models here.class Order(models.Model):    order_dt = models.DateTimeField(auto_now=True)    order_name = models.CharField(max_length=200, verbose_name='NAME')    order_phone = models.CharField(max_length=200, verbose_name='PHONE')    def __str__(self):        return self.order_name    class Meta:        verbose_name = 'Order_'        verbose_name_plural = '_Orders'
+from django.db import models
+
+# Create your models here.
+
+class Order(models.Model):
+    order_dt = models.DateTimeField(auto_now=True)
+    order_name = models.CharField(max_length=200, verbose_name='NAME')
+    order_phone = models.CharField(max_length=200, verbose_name='PHONE')
+
+    def __str__(self):
+        return self.order_name
+
+    class Meta:
+        verbose_name = 'Order_'
+        verbose_name_plural = '_Orders'
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -181,18 +234,65 @@ from django.db import models# Create your models here.class Order(models.Mod
 	views.py
       ____________
 
-from django.shortcuts import renderfrom .models import Order# Create your views here.def first_page(request):    object_list = Order.objects.all()    return render(request, './index.html', { 'object_list': object_list })
+from django.shortcuts import render
+from .models import Order
+
+# Create your views here.
+def first_page(request):
+    object_list = Order.objects.all()
+    return render(request, './index.html', { 'object_list': object_list })
 
 	urls.py
       ___________
 
-from django.contrib import adminfrom django.urls import path# delete from .del_views import first_pagefrom crm import viewsurlpatterns = [    path('admin/', admin.site.urls),    # delete     path('', first_page),    path('', views.first_page)]
+from django.contrib import admin
+from django.urls import path
+# delete from .del_views import first_page
+from crm import views
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    # delete     path('', first_page),
+    path('', views.first_page)
+]
 
 
 	index.html
        ____________
 
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <title>Title</title></head><body>{% if object_list %}<table border="1">    <tr>        <th>ID</th>        <th>DATE</th>        <th>NAME</th>        <th>PHONE</th>    </tr><!--    <h1> {{ object_list }} </h1>-->{% for obj in object_list %}    <tr>        <th>{{ obj.id }}</th>        <th>{{ obj.order_dt }}</th>        <th>{{ obj.order_name }}</th>        <th>{{ obj.order_phone }}</th>    </tr>{% endfor %}</table>{% else %}is empty{% endif %}</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% if object_list %}
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>DATE</th>
+        <th>NAME</th>
+        <th>PHONE</th>
+    </tr>
+<!--    <h1> {{ object_list }} </h1>-->
+{% for obj in object_list %}
+    <tr>
+        <th>{{ obj.id }}</th>
+        <th>{{ obj.order_dt }}</th>
+        <th>{{ obj.order_name }}</th>
+        <th>{{ obj.order_phone }}</th>
+    </tr>
+{% endfor %}
+</table>
+{% else %}
+is empty
+{% endif %}
+
+</body>
+</html>
 
 
 
@@ -204,13 +304,13 @@ from django.contrib import adminfrom django.urls import path# delete from .del
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-012 Формы в Django GET POST запросы.mp4
+013 Формы в Django GET POST запросы.mp4
 
 [watch video]
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-013 Формы как класс Django.mp4
+014 Формы как класс Django.mp4
 
 [watch video]
 
