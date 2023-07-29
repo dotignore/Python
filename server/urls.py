@@ -24,5 +24,6 @@ from crm import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     # delete     path('', first_page),
-    path('', views.first_page)
+    path('', views.first_page),
+    path('thanks', views.thanks_page, name = 'thanks_page')
 ]
