@@ -511,7 +511,50 @@ is empty
 
 014 Формы как класс Django.mp4
 
-[watch video]
+        base.html
+      _____________
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} TITLE BASE {% endblock %}</title>
+</head>
+<body>
+
+<h1>HEAD</h1>
+
+{% block content %}
+{% endblock %}
+
+<h1>BASEMENT</h1>
+
+</body>
+</html>
+
+        index.html
+      _____________
+
+{% extends 'base.html' %}
+{% block title %} TITLE INDEX {% endblock %}
+
+{% block content %}
+
+<h2> DATA FROM INDEX </h2>
+
+{% include 'index_old.html' %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

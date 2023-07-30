@@ -1,55 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} TITLE INDEX {% endblock %}
 
-<style>
-    .css_input{
-        color: yellow;
-        background-color: darkred;
-    }
-</style>
+{% block content %}
 
+<h2> DATA FROM INDEX </h2>
 
-<form action="{% url 'thanks_page' %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p}}
-<!--    <label>NAME</label>-->
-<!--    <input name="name">-->
-<!--    <label>PHONE</label>-->
-<!--    <input name="phone">-->
-<!--    <button type="submit">SEND</button>-->
-</form>
+{% include 'index_old.html' %}
 
-<br>
-<br>
-<br>
-<br>
-
-{% if object_list %}
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>DATE</th>
-        <th>NAME</th>
-        <th>PHONE</th>
-    </tr>
-<!--    <h1> {{ object_list }} </h1>-->
-{% for obj in object_list %}
-    <tr>
-        <th>{{ obj.id }}</th>
-        <th>{{ obj.order_dt }}</th>
-        <th>{{ obj.order_name }}</th>
-        <th>{{ obj.order_phone }}</th>
-    </tr>
-{% endfor %}
-</table>
-{% else %}
-is empty
-{% endif %}
-
-</body>
-</html>
+{% endblock %}
