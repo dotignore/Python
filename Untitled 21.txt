@@ -546,21 +546,30 @@ is empty
 
 {% endblock %}
 
-
-
-
-
-
-
-
-
-
-
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 015 Статические и media директории.mp4
 
-[watch video]
+    CREATE FOLDER
+        static/img
+      __________
+
+        settings.py
+       _____________
+
+STATICFILES_DIRS = [
+    BASE_DIR / "server/static/",
+]
+
+STATIC_URL = 'static/'
+
+        index.html
+      _____________
+
+<img src="{% static 'img/r.jpg' %}" height="300">
+
+[ WATCH VIDEO ]
+
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
