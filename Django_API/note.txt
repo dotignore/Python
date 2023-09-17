@@ -1,0 +1,348 @@
+2 - 2. Zappit Models
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+C:\Users\dot-ignore\Documents\Python>python -m venv venv
+
+C:\Users\dot-ignore\Documents\Python>venv\Scripts\activate
+
+(venv) C:\Users\dot-ignore\Documents\Python\venv\Scripts>python.exe -m pip install Django
+
+(venv) C:\Users\dot-ignore\Documents\Python>django-admin startproject zappit
+
+(venv) C:\Users\dot-ignore\Documents\Python\zappit>python manage.py startapp posts
+
+	models.py
+      _____________
+
+from django.db import models
+from django.contrib.auth.models import User
+
+# Create your models here.
+
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    url = models.URLField()
+    poster = models.ForeignKey(User, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created']
+
+class Vote(models.Model):
+    voter = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+
+(venv) C:\Users\dot-ignore\Documents\Python\zappit-project>python manage.py makemigrations
+
+
+	 settings.py
+	_____________
+
+add post',
+INSTALLED_APPS = [
+    ......
+    'post',
+]
+
+
+(venv) C:\Users\dot-ignore\Documents\Python\zappit-project>python manage.py makemigrations
+
+(venv) C:\Users\dot-ignore\Documents\Python\zappit-project>python manage.py migrate
+
+
+3. Django REST Framework
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+4. Serializers
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+(venv) C:\Users\dot-ignore\Documents\Python\zappit-project>pip3 install djangorestframework
+
+	https://www.django-rest-framework.org/
+       _______________________________________
+
+	 settings.py
+	_____________
+
+add ->'posts',
+add ->'rest_framework'
+
+INSTALLED_APPS = [
+......
+    'posts',
+    'rest_framework',
+]
+
+	https://www.smashingmagazine.com/2018/01/understanding-using-rest-api/
+       _______________________________________
+
+
+	serializers.py
+	_____________
+
+from rest_framework import serializers
+from .models import Post
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['id', 'title', 'url', 'poster', 'created']
+
+	 urls.py
+	_________
+
+from django.contrib import admin
+from django.urls import path
+from posts import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/posts', views.PostList.as_view()),
+]
+
+
+	 views.py
+	__________
+
+from django.shortcuts import render
+from rest_framework import generics
+from .models import Post
+from .serializers import PostSerializer
+# Create your views here.
+
+class PostList(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+5. Adding Posts to the Database
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+(venv) C:\Users\dot-ignore\Documents\Python\zappit-project>python manage.py migrate
+
+(venv) C:\Users\dot-ignore\Documents\Python\zappit-project>python manage.py createsuperuser
+Username (leave blank to use 'dot-ignore'): www
+Email address: qwe@qwe.com
+Password: 123456
+
+	 admin.py
+	__________
+
+from django.contrib import admin
+from .models import Post, Vote
+
+# Register your models here.
+
+admin.site.register(Post)
+admin.site.register(Vote)
+
+
+PS C:\Users\dot-ignore> curl http://127.0.0.1:8000/api/posts
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+6. Creating Posts via the API
+
+
+	 views.py
+	__________
+
+from django.shortcuts import render
+from rest_framework import generics, permissions
+from .models import Post
+from .serializers import PostSerializer
+# Create your views here.
+
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_clases = [permissions.IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(poster=self.request.user)
+
+	 serializes.py
+	_______________
+
+
+from rest_framework import serializers
+from .models import Post
+
+class PostSerializer(serializers.ModelSerializer):
+    poster = serializers.ReadOnlyField(source='poster.username')
+    poster_id = serializers.ReadOnlyField(source='poster.id')
+    class Meta:
+        model = Post
+        fields = ['id', 'title', 'url', 'poster', 'poster_id', 'created']
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+7. Upvoting Posts
+
+	 serializes.py
+	_______________
+
+from rest_framework import serializers
+from .models import Post, Vote
+
+class PostSerializer(serializers.ModelSerializer):
+    poster = serializers.ReadOnlyField(source='poster.username')
+    poster_id = serializers.ReadOnlyField(source='poster.id')
+
+    class Meta:
+        model = Post
+        fields = ['id', 'title', 'url', 'poster', 'poster_id', 'created']
+
+class VoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vote
+        fields = ['id']
+
+	 urls.py
+	_________
+
+from django.contrib import admin
+from django.urls import path
+from posts import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/posts', views.PostList.as_view()),
+    path('api/posts/<int:pk>/vote', views.VoteCraete.as_view()),
+]
+
+	 views.py
+	_________
+
+from django.shortcuts import render
+from rest_framework import generics, permissions
+from rest_framework.exceptions import ValidationError
+from .models import Post, Vote
+from .serializers import PostSerializer, VoteSerializer
+# Create your views here.
+
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_clases = [permissions.IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(poster=self.request.user)
+
+class VoteCraete(generics.CreateAPIView):
+    serializer_class = VoteSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        post = Post.objects.get(pk=self.kwargs['pk'])
+        return Vote.objects.filter(voter=user, post=post)
+
+    def perform_create(self, serializer):
+        if self.get_queryset().exists():
+            raise ValidationError('You have already vote for this post :)')
+        serializer.save(voter=self.request.user, post=Post.objects.get(pk=self.kwargs['pk']))
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+8. API Auth
+
+	 urls.py
+	_________
+
+from django.contrib import admin
+from django.urls import path, include
+from posts import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/posts', views.PostList.as_view()),
+    path('api/posts/<int:pk>/vote', views.VoteCraete.as_view()),
+    path('api-auth/', include('rest_framework.urls')),
+]
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+9. Deleting Votes
+
+	 views.py
+	_________
+
+from django.shortcuts import render
+from rest_framework import generics, permissions, mixins, status
+from rest_framework.exceptions import ValidationError
+from rest_framework.response import Response
+from .models import Post, Vote
+from .serializers import PostSerializer, VoteSerializer
+# Create your views here.
+
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_clases = [permissions.IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(poster=self.request.user)
+
+class VoteCraete(generics.CreateAPIView, mixins.DestroyModelMixin):
+    serializer_class = VoteSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        post = Post.objects.get(pk=self.kwargs['pk'])
+        return Vote.objects.filter(voter=user, post=post)
+
+    def perform_create(self, serializer):
+        if self.get_queryset().exists():
+            raise ValidationError('You have already vote for this post :)')
+        serializer.save(voter=self.request.user, post=Post.objects.get(pk=self.kwargs['pk']))
+
+    def delete(self, request, *args, **kwargs):
+        if self.get_queryset().exists():
+            self.get_queryset().delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        else:
+            raise ValidationError('You never voted for this post...silly!')
+
+
+	 erializers.py
+	_______________
+
+from rest_framework import serializers
+from .models import Post, Vote
+
+class PostSerializer(serializers.ModelSerializer):
+    poster = serializers.ReadOnlyField(source='poster.username')
+    poster_id = serializers.ReadOnlyField(source='poster.id')
+    votes = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Post
+        fields = ['id', 'title', 'url', 'poster', 'poster_id', 'created', 'votes']
+
+    def get_votes(self, post):
+        return Vote.objects.filter(post=post).count()
+
+class VoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vote
+        fields = ['id']
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+10. Deleting Posts
+
+	 urls.py
+	_______________
+
+
+	 views.py
+	_______________
+
+
+
+
+
+
+
+
+
+

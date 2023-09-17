@@ -1,0 +1,7 @@
+C:\Users\dot-ignore\Documents\Python>python -m venv venv
+
+C:\Users\dot-ignore\Documents\Python>venv\Scripts\activate
+
+(venv) C:\Users\dot-ignore\Documents\Python\venv\Scripts>python.exe -m pip install Django
+
+(venv) C:\Users\dot-ignore\Documents\Python>django-admin startproject zappit
