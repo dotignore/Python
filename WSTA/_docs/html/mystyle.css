@@ -1,0 +1,12 @@
+#wrap {
+    background: #e7e7e7;
+    padding: 1%;
+    text-align: center;
+    width: 100%;  
+}
+
+#left, #right {
+     background: #ccc;
+     display: inline-block;    
+     padding: 2%;   
+}
