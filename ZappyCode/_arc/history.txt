@@ -1,0 +1,19 @@
+C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCode\
+	python -m venv venv
+
+C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCode\venv\Scripts\activate
+	activate.bat
+	python -m pip install Django
+
+C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCode\
+	django-admin startproject zappit
+	python manage.py startapp posts
+	pip3 install djangorestframework
+	python manage.py startapp posts
+
+add python file
+
+	python manage.py makemigrations
+	python manage.py migrate
+	
+	python manage.py runserver
