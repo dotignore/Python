@@ -27,6 +27,7 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
+        <option value="$MODULE_DIR$/wsta" />
         <option value="$MODULE_DIR$/todo/templates" />
       </list>
     </option>

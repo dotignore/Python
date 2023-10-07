@@ -10,6 +10,6 @@ urlpatterns = [
     path('todos/completed',         views.TodoCompletedList.as_view()),
 
     # Auth
-    path('signup', views.signup),
-    path('login', views.login),
+    # path('signup', views.signup),
+    # path('login', views.login),
 ]
