@@ -1,0 +1,274 @@
+-------------------
+| 059 New Project |
+-------------------
+
+C:\Users\IgNOrE\Documents\GitHub\Python\test\
+	python -m venv venv
+
+(venv) C:\Users\IgNOrE\Documents\GitHub\Python\test\venv\Scripts\venv\Scripts\activate
+	activate.bat
+	python -m pip install Django
+
+C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCodeVideo\
+	django-admin startproject todowoo
+
+C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCodeVideo\todowoo
+	python manage.py startapp todo
+
+
+settings.py
+------------
+    'todo',
+
+C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCodeVideo\todowoo
+	python manage.py runserver
+
+--------------------
+| 060 Sign Up Form |
+--------------------
+
+C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCodeVideo\todowoo>
+	python manage.py migrate
+
+urls.py
+--------
+
+from django.contrib import admin
+from django.urls import path
+from todo import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    # Auth
+    path('signup/', views.signupuser, name='signupuser'),
+]
+
+views.py
+--------
+
+from django.shortcuts import render
+
+# Create your views here.
+from django.contrib.auth.forms import UserCreationForm
+
+# Create your views here.
+def signupuser(request):
+    return render(request, 'todo/signupuser.html', {'form':UserCreationForm()})
+
+
+signupuser.html
+---------------
+
+<h1>Sign Up</h1>
+
+<form method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<button type='submit'>Sign UP</button>
+</form>
+
+
+	python manage.py runserver
+
+-----------------------
+| 061 Creating a User |
+-----------------------
+
+
+
+views.py
+--------
+
+from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+# Create your views here.
+def signupuser(request):
+    if request.method == 'GET':
+        return render(request, 'todo/signupuser.html', {'form':UserCreationForm()})
+    else:
+        if request.POST['password1'] == request.POST['password2']:
+            user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+            user.save()
+        else:
+            print('hello')
+
+python manage.py createsuperuser
+	l:user
+	p:123
+	
+python manage.py runserver
+	
+	add user in WEB interafce
+	p:joe
+	l:123
+ERROR: response = get_response(request)
+
+----------------------
+| 062 Error Handling |
+----------------------
+
+urls.py
+-------
+
+from django.contrib import admin
+from django.urls import path
+from todo import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    # Auth
+    path('signup/', views.signupuser, name='signupuser'),
+
+    # Todos
+    path('current/', views.currenttodos, name='currenttodos'),
+]
+
+
+views.py
+--------
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+from django.contrib.auth import login
+
+def signupuser(request):
+    if request.method == 'GET':
+        return render(request, 'todo/signupuser.html', {'form':UserCreationForm()})
+    else:
+        if request.POST['password1'] == request.POST['password2']:
+            try:
+                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+                user.save()
+                login(request, user)
+                return redirect('currenttodos')
+            except IntegrityError:
+                return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'That username has already been taken. Please choose a new username'})
+        else:
+            return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'Passwords did not match'})
+
+def currenttodos(request):
+    return render(request, 'todo/currenttodos.html')
+
+signupuser.html
+---------------
+
+<h1>Sign Up</h1>
+
+<h2>{{ error }}</h2>
+
+<form method="POST">
+  {% csrf_token %}
+{{ form.as_p }}
+<button type='submit'>Sign UP</button>
+</form>
+
+
+------------------------------------------------------------------------------------------------------------------------
+--------------------------------------
+| 063 Showing If a User Is Logged In |
+--------------------------------------
+
+
+views.py
+--------
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+from django.contrib.auth import login
+
+def signupuser(request):
+    if request.method == 'GET':
+        return render(request, 'todo/signupuser.html', {'form':UserCreationForm()})
+    else:
+        if request.POST['password1'] == request.POST['password2']:
+            try:
+                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+                user.save()
+                login(request, user)
+                return redirect('currenttodos')
+            except IntegrityError:
+                return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'That username has already been taken. Please choose a new username'})
+        else:
+            return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'Passwords did not match'})
+
+def currenttodos(request):
+    return render(request, 'todo/currenttodos.html')
+
+
+base.html
+--------
+
+{% if user.is_authenticated %}
+
+Looggen In as {{ user.username }}
+
+<a href="#">Logout</a>
+
+{% else %}
+
+<a href="#">Sing Up</a>
+<a href="#">Login</a>
+
+{% endif %}
+<br>
+<br>
+
+{% block content %}{% endblock %}
+
+
+currenttodos.html
+---------------
+
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+Current
+
+{% endblock %}
+
+
+signupuser.html
+---------------
+
+{% extends 'todo/base.html' %}
+{% block content %}
+
+<h1>Sign Up</h1>
+
+<h2>{{ error }}</h2>
+
+<form method="POST">
+  {% csrf_token %}
+{{ form.as_p }}
+<button type='submit'>Sign UP</button>
+</form>
+{% endblock %}
+
+-------------------
+| 059 New Project |
+-------------------
+
+-------------------
+| 059 New Project |
+-------------------
+
+-------------------
+| 059 New Project |
+-------------------
+
+-------------------
+| 059 New Project |
+-------------------
+
+-------------------
+| 059 New Project |
+-------------------

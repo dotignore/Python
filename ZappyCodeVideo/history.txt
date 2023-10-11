@@ -2,10 +2,10 @@
 | 059 New Project |
 -------------------
 
-C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCode\
+C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCodeVideo\
 	python -m venv venv
 
-C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCode\venv\Scripts\activate
+C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCodeVideo\venv\Scripts\activate
 	activate.bat
 	python -m pip install Django
 
@@ -175,9 +175,83 @@ signupuser.html
 --------------------------------------
 
 
+views.py
+--------
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+from django.contrib.auth import login
+
+def signupuser(request):
+    if request.method == 'GET':
+        return render(request, 'todo/signupuser.html', {'form':UserCreationForm()})
+    else:
+        if request.POST['password1'] == request.POST['password2']:
+            try:
+                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+                user.save()
+                login(request, user)
+                return redirect('currenttodos')
+            except IntegrityError:
+                return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'That username has already been taken. Please choose a new username'})
+        else:
+            return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':'Passwords did not match'})
+
+def currenttodos(request):
+    return render(request, 'todo/currenttodos.html')
 
 
+base.html
+--------
 
+{% if user.is_authenticated %}
+
+Looggen In as {{ user.username }}
+
+<a href="#">Logout</a>
+
+{% else %}
+
+<a href="#">Sing Up</a>
+<a href="#">Login</a>
+
+{% endif %}
+<br>
+<br>
+
+{% block content %}{% endblock %}
+
+
+currenttodos.html
+---------------
+
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+Current
+
+{% endblock %}
+
+
+signupuser.html
+---------------
+
+{% extends 'todo/base.html' %}
+{% block content %}
+
+<h1>Sign Up</h1>
+
+<h2>{{ error }}</h2>
+
+<form method="POST">
+  {% csrf_token %}
+{{ form.as_p }}
+<button type='submit'>Sign UP</button>
+</form>
+{% endblock %}
 
 -------------------
 | 059 New Project |
