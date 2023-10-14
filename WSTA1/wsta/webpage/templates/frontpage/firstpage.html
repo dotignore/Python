@@ -1,10 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Boxes Page</title>
+
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 420px;
+    margin: 0;
+  }
+
+  .box {
+    width: 300px;
+    height: 200px;
+    background-color: #EEEEEE;
+    margin: 10px;
+  }
+
+  .head {
+    text-align: center;
+    font-size: 34px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .submit{
+    display: block;
+    margin: 0 auto; /* This centers the element horizontally */
+  }
+
+select {
+  font-size: 0.9rem;
+  padding: 2px 5px;
+}
+
+
+
+
+</style>
 </head>
 <body>
-Hello
+  <div class="head"><p>Translate Text To Speach Dictionnary</p></div>
+
+  <div class="box">
+
+<select name="pets" id="pet-select" style="width: 300px;">
+  <option value="">Choose lang</option>
+  <option value="dog">Dog</option>
+  <option value="cat">Cat</option>
+  <option value="hamster">Hamster</option>
+  <option value="parrot">Parrot</option>
+  <option value="spider">Spider</option>
+  <option value="goldfish">Goldfish</option>
+</select>
+
+<textarea name="text" cols="38" rows="5">
+Add multiple lines of text here and watch the scrollbars grow...
+</textarea>
+
+<br>
+<input class="submit" type="submit" value="Submit">
+
+  </div>
+
+
+
+
+
+  <div class="box">box2</div>
 </body>
 </html>
