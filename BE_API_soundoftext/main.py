@@ -1,11 +1,72 @@
+import requests
+import json
+# import sys
+# import uuid
 
+post = requests.post(
+    "https://api.soundoftext.com/sounds",
+    data=json.dumps( {
+        "engine": "Google",
+        "data": {
+            "text": "Tenement",
+            "voice": "en-US"
+        }
+    }),
+    headers={"Content-Type": "application/json"},
+)
 
+print(post.text) # displays the result body.
+# {"success":true,"id":"d622f420-0ad9-11ee-a44a-8501b7b1aefa"}
 
-{
-  "engine": "Google",
-  "data": {
-    "text": "Tenement",
-    "voice": "en-US"
-  }
-}
+response_id = post.json()['id']
+#print(response_id)
 
+#======================================
+
+get = requests.get(
+    "https://api.soundoftext.com/sounds/" + response_id + "",
+    headers={"Content-Type": "application/json"},
+)
+#print(get.text) # displays the result body.
+# {"status":"Done","location":"https://files.soundoftext.com/d622f420-0ad9-11ee-a44a-8501b7b1aefa.mp3"}
+
+response_json = get.json()
+url = response_json["location"]
+print(url)
+# https://files.soundoftext.com/d622f420-0ad9-11ee-a44a-8501b7b1aefa.mp3
+
+#======================================
+
+response = requests.get(url)
+
+# Check if the request was successful (status code 200)
+if response.status_code == 200:
+    # Get the Content-Disposition header
+    content_disposition = response.headers.get('Content-Disposition')
+
+    # Print the Content-Disposition header
+    print(f"Content-Disposition: {content_disposition}")
+
+    parameters = content_disposition.split(';')
+    # Iterate through the parameters to find the one containing 'filename='
+    for parameter in parameters:
+        if 'filename=' in parameter:
+            filename = parameter.split('=')[-1].strip()
+            break
+    print(filename)
+else:
+    print(f"Error: Unable to download the file. Status code: {response.status_code}")
+
+# ======================================
+
+print(f'{response_id}.mp3 ==> {filename}')
+# d622f420-0ad9-11ee-a44a-8501b7b1aefa.mp3 ==> Tenement.mp3
+
+print('\nDownload Starting...')
+r = requests.get(url)
+with open(f'dwld/{filename}', 'wb') as output_file:
+    output_file.write(r.content)
+print(f'File name {filename}')
+print('Download Completed!!!')
+
+# ======================================
