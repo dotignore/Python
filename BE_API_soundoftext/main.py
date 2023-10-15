@@ -3,6 +3,7 @@ import json
 # import sys
 # import uuid
 
+# ==== POST Request ====
 post = requests.post(
     "https://api.soundoftext.com/sounds",
     data=json.dumps( {
@@ -21,7 +22,7 @@ print(post.text) # displays the result body.
 response_id = post.json()['id']
 #print(response_id)
 
-#======================================
+# ==== GET Request ====
 
 get = requests.get(
     "https://api.soundoftext.com/sounds/" + response_id + "",
@@ -35,7 +36,7 @@ url = response_json["location"]
 print(url)
 # https://files.soundoftext.com/d622f420-0ad9-11ee-a44a-8501b7b1aefa.mp3
 
-#======================================
+# ==== get name.mp3 ====
 
 response = requests.get(url)
 
@@ -46,6 +47,7 @@ if response.status_code == 200:
 
     # Print the Content-Disposition header
     print(f"Content-Disposition: {content_disposition}")
+    # Content-Disposition: attachment; filename*=UTF-8''Tenement.mp3; filename=Tenement.mp3
 
     parameters = content_disposition.split(';')
     # Iterate through the parameters to find the one containing 'filename='
@@ -54,10 +56,11 @@ if response.status_code == 200:
             filename = parameter.split('=')[-1].strip()
             break
     print(filename)
+    # Tenement.mp3
 else:
     print(f"Error: Unable to download the file. Status code: {response.status_code}")
 
-# ======================================
+# # ==== save name.mp3 ====
 
 print(f'{response_id}.mp3 ==> {filename}')
 # d622f420-0ad9-11ee-a44a-8501b7b1aefa.mp3 ==> Tenement.mp3
