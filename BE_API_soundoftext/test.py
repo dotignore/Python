@@ -1,25 +1,38 @@
-import requests
+# Open the file
+with open('list.txt', 'r') as file:
+    # Read the lines
+    lines = file.readlines()
 
-url = "https://files.soundoftext.com/d622f420-0ad9-11ee-a44a-8501b7b1aefa.mp3"
-response = requests.get(url)
+    # print(lines[1].strip())
+    # print(lines[3].strip())
 
-# Check if the request was successful (status code 200)
-if response.status_code == 200:
-    # Get the Content-Disposition header
-    content_disposition = response.headers.get('Content-Disposition')
+    # Print each line
+    for line in lines:
+        print(line.strip())  # strip() removes any leading or trailing whitespace
 
-    # Print the Content-Disposition header
-    #print(f"Content-Disposition: {content_disposition}")
 
-    parameters = content_disposition.split(';')
-    # Iterate through the parameters to find the one containing 'filename='
-    for parameter in parameters:
-        if 'filename=' in parameter:
-            filename = parameter.split('=')[-1].strip()
-            break
-    print(filename)
-else:
-    print(f"Error: Unable to download the file. Status code: {response.status_code}")
+# import requests
+#
+# url = "https://files.soundoftext.com/d622f420-0ad9-11ee-a44a-8501b7b1aefa.mp3"
+# response = requests.get(url)
+#
+# # Check if the request was successful (status code 200)
+# if response.status_code == 200:
+#     # Get the Content-Disposition header
+#     content_disposition = response.headers.get('Content-Disposition')
+#
+#     # Print the Content-Disposition header
+#     #print(f"Content-Disposition: {content_disposition}")
+#
+#     parameters = content_disposition.split(';')
+#     # Iterate through the parameters to find the one containing 'filename='
+#     for parameter in parameters:
+#         if 'filename=' in parameter:
+#             filename = parameter.split('=')[-1].strip()
+#             break
+#     print(filename)
+# else:
+#     print(f"Error: Unable to download the file. Status code: {response.status_code}")
 
 
 
