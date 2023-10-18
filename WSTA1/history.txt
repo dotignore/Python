@@ -9,18 +9,17 @@ C:\Users\IgNOrE\Documents\GitHub\Python\test\
 	activate.bat
 	python -m pip install Django
 
-C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCodeVideo\
-	django-admin startproject todowoo
+(venv) C:\Users\IgNOrE\Documents\GitHub\Python\test\
+	django-admin startproject wsta
 
-C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCodeVideo\todowoo
-	python manage.py startapp todo
-
+(venv) C:\Users\IgNOrE\Documents\GitHub\Python\test\wsta
+	python manage.py startapp webpage
 
 settings.py
 ------------
     'todo',
 
-C:\Users\IgNOrE\Documents\GitHub\Python\ZappyCodeVideo\todowoo
+(venv) C:\Users\IgNOrE\Documents\GitHub\Python\test\wsta
 	python manage.py runserver
 
 --------------------
@@ -41,7 +40,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Auth
-    path('signup/', views.signupuser, name='signupuser'),
+    path('first/', views.firstpage, name='firstpage'),
 ]
 
 views.py
