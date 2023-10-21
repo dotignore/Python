@@ -1,3 +1,89 @@
+# ==============   Translate SCRIPT 3  ==============
+
+# ==============   Translate SCRIPT 3  ==============
+
+# ==============   Translate SCRIPT 2  ==============
+
+# https://stackoverflow.com/questions/73881616/attributeerror-when-using-googletrans-module
+
+# from tkinter import*
+# from tkinter import ttk
+# from googletrans import Translator,LANGUAGES
+#
+# def change(text="type",src="English",dest="Hindi"):
+#     text1=text
+#     src1=src
+#     dest1=dest
+#     trans = Translator()
+#     trans1 = trans.translate(text,src=src1,dest=dest1)
+#     return trans1.text
+#
+# def data():
+#     s =comb_sor.get()
+#     d =comb_dest.get()
+#     msg = Sor_txt.get(1.0,END)
+#     textget = change(text=msg,src=s,dest=d)
+#     dest_txt.delete(1.0,END)
+#     dest_txt.insert(END,textget)
+#
+#
+# root = Tk()
+# root.title("Translater")
+# root.geometry("500x800")
+# root.config(bg="#FFE1F3")
+#
+# lab_txt=Label(root,text="Translator", font=("Time New Roman",40,"bold"),fg="#478C5C")
+# lab_txt.place(x=100,y=40,height=50,width=300)
+#
+# frame=Frame(root).pack(side=BOTTOM)
+#
+# lab_txt=Label(root,text="Source Text", font=("Time New Roman",20,"bold"),fg="#FFFF8A",bg="#FDA172")
+# lab_txt.place(x=100,y=100,height=20,width=300)
+#
+#
+# Sor_txt =Text(frame,font=("Time New Roman",20,"bold"),wrap=WORD)
+# Sor_txt.place(x=10,y=130,height=150,width=480)
+#
+# list_text = list(LANGUAGES.values())
+# comb_sor = ttk.Combobox(frame,value=list_text)
+# comb_sor.place(x=10,y=300,height=20,width=100)
+# comb_sor.set("English")
+#
+# button_change = Button(frame,text="Translate",relief=RAISED,command=data)
+# button_change.place(x=120,y=300,height=40,width=100)
+#
+# comb_dest = ttk.Combobox(frame,value=list_text)
+# comb_dest.place(x=230,y=300,height=20,width=100)
+# comb_dest.set("English")
+#
+# lab_txt=Label(root,text="Dest Text", font=("Time New Roman",20,"bold"),fg="#2E2EFF")
+# lab_txt.place(x=100,y=360,height=50,width=300)
+#
+# dest_txt=Text(frame,font=("Time New Roman",20,"bold"),wrap=WORD)
+# dest_txt.place(x=10,y=400,height=150,width=480)
+#
+# root.mainloop()
+
+# ==============   Translate SCRIPT 2  ==============
+
+# ==============   Translate SCRIPT 1  ==============
+
+# https://pypi.org/project/translate/
+# from translate import Translator
+#
+# def translate_word(word, source_lang, target_lang):
+#     translator= Translator(to_lang=target_lang, from_lang=source_lang)
+#     translation = translator.translate(word)
+#     return translation
+#
+# source_word = "Hello, how are you?"
+# source_lang = "en"  # English
+# target_lang = "uk"  # French
+#
+# translated_word = translate_word(source_word, source_lang, target_lang)
+# print(f"Translated word: {translated_word}")
+
+# ==============   Translate SCRIPT 1  ==============
 
 # ==============   GLUE SCRIPT 1  ==============
 
@@ -18,20 +104,6 @@
 
 # ==============   GLUE SCRIPT 1 ==============
 
-# ==============   GLUE SCRIPT 2 ==============
-#
-# from pydub import AudioSegment
-# orig_seg = AudioSegment.from_file('sample.wav')
-# silence_seg = AudioSegment.silent(duration=1000) # 1000 for 1 sec, 2000 for 2 secs
-#
-# # for adding silence at the end of audio
-# combined_audio = orig_seg + silence_seg
-#
-# for adding silence at the start of audio
-# combined_audio = silence_seg + orig_seg
-#
-# ==============   GLUE SCRIPT 2 ==============
-
 # ==============   GLUE SCRIPT 3 ==============
 
 # Add silence to the end of an MP3 python
@@ -45,13 +117,13 @@
 # setx /m PATH "C:\ffmpeg\bin;%PATH%"
 
 # FUNCOTION example send paramerer
-from pydub import AudioSegment
-def add_silence(input_file, output_file):
-    audio = AudioSegment.from_file(input_file, format="mp3")
-    silence = AudioSegment.silent(duration=5000)
-    output_audio = silence + audio
-    output_audio.export(output_file, format="mp3")
-add_silence("Jacket.mp3", "output.mp3")
+# from pydub import AudioSegment
+# def add_silence(input_file, output_file):
+#     audio = AudioSegment.from_file(input_file, format="mp3")
+#     silence = AudioSegment.silent(duration=5000)
+#     output_audio = silence + audio
+#     output_audio.export(output_file, format="mp3")
+# add_silence("Jacket.mp3", "output.mp3")
 
 # ==============   GLUE SCRIPT 3 ==============
 
