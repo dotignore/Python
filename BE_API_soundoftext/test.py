@@ -1,4 +1,55 @@
+
+# ==============   Translate SCRIPT 4  ==============
+
+from googletrans import Translator
+
+def translate_to(text):
+    translator = Translator()
+    translation = translator.translate(text, src='en', dest='uk')
+    return translation.text
+
+# Read input file
+with open('list.txt', 'r', encoding='utf-8') as file:
+    lines = file.readlines()
+
+# Translate each line and store in an array
+translations = [translate_to(line.strip()) for line in lines]
+
+# print("Translation of first element:")
+# print(translations[0])
+#
+# print("\nTranslation of last element:")
+# print(translations[3])
+
+# Print translations
+for translation in translations:
+    print(translation)
+
+# Write translations to output file
+with open('output.txt', 'w', encoding='utf-8') as file:
+    for translation in translations:
+        file.write(translation + '\n')
+
+print("Translations written to output.txt")
+
+# ==============   Translate SCRIPT 4  ==============
+
+
 # ==============   Translate SCRIPT 3  ==============
+
+# # https://py-googletrans.readthedocs.io/en/latest/
+#
+# from googletrans import Translator
+# def translate_to_ukrainian(text):
+#     translator = Translator()
+#     translation = translator.translate(text, src='en', dest='uk')
+#     return translation.text
+#
+# # Example usage
+# english_text = "Hello, how are you?"
+# ukrainian_translation = translate_to_ukrainian(english_text)
+# print(english_text)
+# print(ukrainian_translation)
 
 # ==============   Translate SCRIPT 3  ==============
 
@@ -68,7 +119,7 @@
 
 # ==============   Translate SCRIPT 1  ==============
 
-# https://pypi.org/project/translate/
+# # https://pypi.org/project/translate/
 # from translate import Translator
 #
 # def translate_word(word, source_lang, target_lang):
