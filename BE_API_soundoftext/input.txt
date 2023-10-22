@@ -1,1 +1,4 @@
 World
+Jacket
+Radio
+Bag
