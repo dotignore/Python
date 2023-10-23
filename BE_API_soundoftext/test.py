@@ -1,36 +1,50 @@
 
 # ==============   Translate SCRIPT 4  ==============
 
-from googletrans import Translator
+# Read input.txt and output.txt
+with open('input.txt', 'r', encoding='utf-8') as input_file:
+    input_lines = input_file.read().splitlines()
 
-def translate_to(text):
-    translator = Translator()
-    translation = translator.translate(text, src='en', dest='uk')
-    return translation.text
+with open('output.txt', 'r', encoding='utf-8') as output_file:
+    output_lines = output_file.read().splitlines()
 
-# Read input file
-with open('list.txt', 'r', encoding='utf-8') as file:
-    lines = file.readlines()
+# Create a dictionary to map input to output
+mapping = dict(zip(output_lines, input_lines))
 
-# Translate each line and store in an array
-translations = [translate_to(line.strip()) for line in lines]
+# Print the mapped values
 
-# print("Translation of first element:")
-# print(translations[0])
+for item in output_lines:
+    output_value = mapping.get(item, "Not Found")
+    print(f'{item} -> {output_value}')
+
+# Світ -> World
+# Куртка -> Jacket
+# Радіо -> Radio
+# Мішок -> Bag
+
+
+
+# # Read input.txt and output.txt
+# with open('input.txt', 'r', encoding='utf-8') as input_file:
+#     input_lines = input_file.read().splitlines()
 #
-# print("\nTranslation of last element:")
-# print(translations[3])
-
-# Print translations
-for translation in translations:
-    print(translation)
-
-# Write translations to output file
-with open('output.txt', 'w', encoding='utf-8') as file:
-    for translation in translations:
-        file.write(translation + '\n')
-
-print("Translations written to output.txt")
+# with open('output.txt', 'r', encoding='utf-8') as output_file:
+#     output_lines = output_file.read().splitlines()
+#
+# # Create a dictionary to map input to output
+# mapping = dict(zip(input_lines, output_lines))
+#
+# # Print the mapped values
+#
+# for item in input_lines:
+#     output_value = mapping.get(item, "Not Found")
+#     print(f'{item} -> {output_value}')
+#
+#
+# World -> Світ
+# Jacket -> Куртка
+# Radio -> Радіо
+# Bag -> Мішок
 
 # ==============   Translate SCRIPT 4  ==============
 
