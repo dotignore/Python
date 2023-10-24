@@ -1,21 +1,21 @@
 
 # ==============   Translate SCRIPT 4  ==============
 
-# Read input.txt and output.txt
-with open('input.txt', 'r', encoding='utf-8') as input_file:
-    input_lines = input_file.read().splitlines()
-
-with open('output.txt', 'r', encoding='utf-8') as output_file:
-    output_lines = output_file.read().splitlines()
-
-# Create a dictionary to map input to output
-mapping = dict(zip(output_lines, input_lines))
-
-# Print the mapped values
-
-for item in output_lines:
-    output_value = mapping.get(item, "Not Found")
-    print(f'{item} -> {output_value}')
+# # Read input.txt and output.txt
+# with open('input.txt', 'r', encoding='utf-8') as input_file:
+#     input_lines = input_file.read().splitlines()
+#
+# with open('output.txt', 'r', encoding='utf-8') as output_file:
+#     output_lines = output_file.read().splitlines()
+#
+# # Create a dictionary to map input to output
+# mapping = dict(zip(output_lines, input_lines))
+#
+# # Print the mapped values
+#
+# for item in output_lines:
+#     output_value = mapping.get(item, "Not Found")
+#     print(f'{item} -> {output_value}')
 
 # Світ -> World
 # Куртка -> Jacket
