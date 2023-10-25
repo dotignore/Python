@@ -1,9 +1,6 @@
 import requests
 import json
 
-# Doc works about API external request
-# https://soundoftext.com/docs
-
 # Open the file
 with open('input.txt', 'r') as file:
     # Read the lines
@@ -132,17 +129,29 @@ for line in lines:
     add_silence(f'dwld/{filename}', f'dwld/{filename}')
     print('Added silents to file')
     print(f'Finish add silence name_file.mp3 \n')
-
 # ==== add silence to start file ====
 
-    print('============================================================')
+print('============================================================')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 # ==== Start translate from EN input.txt to UK output.txt ====
-
-# Doc works with translate lib "googletrans"
 # https://py-googletrans.readthedocs.io/en/latest/
 
 print('Start translate from EN input.txt to UK output.txt')
@@ -188,8 +197,21 @@ print('============================================================')
 
 
 
-# Read input.txt and output.txt files
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Read input.txt and output.txt
 with open('input.txt', 'r', encoding='utf-8') as input_file:
     input_lines = input_file.read().splitlines()
 
@@ -255,7 +277,7 @@ for item in output_lines:
     output_value = mapping.get(item, "Not Found")
     print(f'Rename file {item}_ua.mp3 -> {output_value}_ua.mp3')
 
-    filename = output_value + "-ua.mp3"
+    filename = output_value + "-aa.mp3"
 
 # ==== get name.mp3 ====
 
@@ -274,5 +296,59 @@ for item in output_lines:
 
 # ==== save name.mp3 ====
 
-    print('============================================================')
+
+
+#json_data_input = '{"data": {"engine": "Google", "voice_in": "en-US", "voice_out": "uk-UA", "voice_out_silent": 1500, "lines": ["World", "Jacket", "Radio", "Bag"]}}'
+
+json_data_input = '{' \
+                  '        "in_lang": "en-US",' \
+                  '        "out_lang": "uk-UA",' \
+                  '        "silent": 1500,' \
+                  '        "lines": [' \
+                  '            "World",' \
+                  '            "Jacket",' \
+                  '            "Radio",' \
+                  '            "Bag"' \
+                  '        ]' \
+                  '    }' \
+                  '}'
+
+# Load the JSON data
+parsed_data = json.loads(json_data)
+
+# Access the values
+engine = parsed_data["data"]["engine"]
+voice_in = parsed_data["data"]["voice_in"]
+voice_out = parsed_data["data"]["voice_out"]
+voice_out_silent = parsed_data["data"]["voice_out_silent"]
+lines = parsed_data["data"]["lines"]
+
+# Print the values
+print(f"Engine: {engine}")
+print(f"Voice In: {voice_in}")
+print(f"Voice Out: {voice_out}")
+print(f"Voice Out Silent: {voice_out_silent}")
+print(f"Lines: {', '.join(lines)}")
+
+
+# input
+#
+# API parameters
+# lang
+# Engin
+# Word
+#
+# module POST
+# module GET
+#
+    # Google translate
+    # lang1 -> lang2
+#
+# name of file _ln.mp3, -ln.mp3
+#
+# silense time 1500 ms
+#
+# modul rename file lang
+#
+# modile download
 
