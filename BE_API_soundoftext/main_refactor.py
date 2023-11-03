@@ -4,13 +4,6 @@ from googletrans import Translator
 from association_langs import get_output_language
 from json_data import json_data
 
-def translate_lines(lines_in):
-    print(f'|| Start translate from {lang_in} to {lang_out}')
-    print(f'|| Print lines{lines_in}')
-
-
-
-
 
 def translator(lines_in):
     from googletrans import Translator
