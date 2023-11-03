@@ -140,6 +140,9 @@ for line in lines:
 
 
 
+
+
+
 # ==== Start translate from EN input.txt to UK output.txt ====
 
 # Doc works with translate lib "googletrans"
@@ -159,6 +162,8 @@ with open('input.txt', 'r', encoding='utf-8') as file:
     lines = file.readlines()
 
 # Translate each line and store in an array
+# pip install googletrans==4.0.0-rc1
+# AttributeError: 'NoneType' object has no attribute 'group'
 translations = [translate_to(line.strip()) for line in lines]
 
 # print("Translation of first element:")
@@ -182,7 +187,10 @@ print('Finish translate from EN to UK input.txt => output.txt\n')
 
 # ==== SFinish translate from EN input.txt to UK output.txt ====
 
-print('============================================================')
+
+
+
+
 
 
 

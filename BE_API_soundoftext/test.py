@@ -1,4 +1,195 @@
 
+
+
+
+
+
+
+# ============== JSON DATA  ==============
+
+# def get_output_language(lang_in):
+#     language_mapping = {
+#         "af-ZA": "af",
+#         "ar-AE": "ar",
+#         "bn-IN": "bn",
+#         "bs": "bs",
+#         "ca-ES": "ca",
+#         "cs-CZ": "cs",
+#         "cy": "cy",
+#         "da-DK": "da",
+#         "de-DE": "de",
+#         "el-GR": "el",
+#         "en-US": "en",
+#         "en-GB": "en",
+#         "en-AU": "en",
+#         "eo": "eo",
+#         "es-ES": "es",
+#         "es-MX": "es",
+#         "et": "et",
+#         "fi-FI": "fi",
+#         "fr-FR": "fr",
+#         "fr-CA": "fr",
+#         "fil-PH": "fr",
+#         "gu": "gu",
+#         "hi-IN": "hi",
+#         "hr-HR": "hr",
+#         "hu-HU": "hu",
+#         "hy": "hy",
+#         "id-ID": "id",
+#         "is-IS": "is",
+#         "it-IT": "it",
+#         "ja-JP": "ja",
+#         "km": "km",
+#         "kn": "kn",
+#         "ko-KR": "ko",
+#         "la": "la",
+#         "lv": "lv",
+#         "mk": "mk",
+#         "ml": "ml",
+#         "mr": "mr",
+#         "my": "my",
+#         "ne": "ne",
+#         "nl-NL": "nl",
+#         "nb-NO": "no",
+#         "pl-PL": "pl",
+#         "pt-BR": "pt",
+#         "ro-RO": "ro",
+#         "ru-RU": "ru",
+#         "si": "si",
+#         "sk-SK": "sk",
+#         "sq": "sq",
+#         "sr-RS": "sr",
+#         "sv-SE": "sv",
+#         "sw": "sw",
+#         "ta": "ta",
+#         "te": "te",
+#         "th-TH": "th",
+#         "tr-TR": "tr",
+#         "uk-UA": "uk",
+#         "ur": "ur",
+#         "vi-VN": "vi",
+#         "cmn-Hant-TW": "zh-tw",
+#         "cmn-Hant-TW": "zh-cn"
+#     }
+#     return language_mapping.get(lang_in, lang_in)
+#
+# # Example usage
+# lang_in = "af-ZA"
+# lang_out = get_output_language(lang_in)
+# print(f"lang_in: {lang_out} lanf_out: {lang_in}")  # This will print "af"
+#
+# lang_in = "ar-AE"
+# lang_out = get_output_language(lang_in)
+# print(f"lang_in: {lang_out} lanf_out: {lang_in}")  # This will print "af"
+#
+# lang_in = "uk-UA"
+# lang_out = get_output_language(lang_in)
+# print(f"lang_in: {lang_out} lanf_out: {lang_in}")  # This will print "af"
+#
+# lang_in = "en-US"
+# lang_out = get_output_language(lang_in)
+# print(f"lang_in: {lang_out} lanf_out: {lang_in}")  # This will print "af"
+
+
+# ============== JSON DATA  ==============
+
+# ============== JSON import 2 ==============
+
+# import json
+#
+# def translate_to(lang_in, lang_out, lines_in):
+#     print('Start translate from EN input.txt to UK output.txt')
+#
+#     print(f'Print lang in = {lang_in}')
+#     print(f'Print lang out = {lang_out}')
+#     print(f'Print line in ={lines_in}')
+#
+#     if en-US
+#
+#     from googletrans import Translator
+#     def translate_to(text):
+#         translator = Translator()
+#         translation = translator.translate(text, src='en', dest='uk')
+#         return translation.text
+#
+#     translations = [translate_to(line.strip()) for line in lines_in]
+#
+#     for translation in translations:
+#         print(translation)
+#
+#     with open('output.txt', 'w', encoding='utf-8') as file:
+#         for translation in translations:
+#             file.write(translation + '\n')
+#
+#     print('Finish translate from EN to UK input.txt => output.txt\n')
+#
+# json_data = '''
+# {
+#     "lang_in": "en-US",
+#     "lang_out": "uk-UA",
+#     "silent": 1500,
+#     "lines_in": [
+#         "World",
+#         "Jacket",
+#         "Radio",
+#         "Bag"
+#     ]
+# }
+# '''
+#
+# # Load the JSON data
+# parsed_data = json.loads(json_data)
+#
+# # Access the values
+# lang_in = parsed_data["lang_in"]
+# lang_out = parsed_data["lang_out"]
+# silent = parsed_data["silent"]
+# lines_in = parsed_data["lines_in"]
+#
+# # Call the function
+# translate_to(lang_in, lang_out, lines_in)
+
+
+# ============== JSON import 2 ==============
+
+
+
+
+# ============== JSON import 1 ==============
+# import json
+#
+# json_data = '''
+# {
+#     "in_lang": "en-US",
+#     "out_lang": "uk-UA",
+#     "silent": 1500,
+#     "lines": [
+#         "World",
+#         "Jacket",
+#         "Radio",
+#         "Bag"
+#     ]
+# }
+# '''
+#
+# # Load the JSON data
+# parsed_data = json.loads(json_data)
+#
+# # Access the values
+# in_lang = parsed_data["in_lang"]    # In Language: en-US
+# out_lang = parsed_data["out_lang"]  # Out Language: uk-UA
+# silent = parsed_data["silent"]      # Silent: 1500
+# lines = parsed_data["lines"]        # Lines: World, Jacket, Radio, Bag
+#
+# # Print the values
+# print(f"In Language: {in_lang}")
+# print(f"Out Language: {out_lang}")
+# print(f"Silent: {silent}")
+# print(f"Lines: {', '.join(lines)}")
+
+
+# ============== JSON import 1 ==============
+
 # ==============   Translate SCRIPT 4  ==============
 
 # # Read input.txt and output.txt
