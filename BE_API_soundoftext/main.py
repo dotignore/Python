@@ -35,7 +35,7 @@ for line in lines:
         headers={"Content-Type": "application/json"},
     )
 
-    print(post.text)  # displays the result body.
+    print(f'============={post.text}')  # displays the result body.
     # {"success":true,"id":"d622f420-0ad9-11ee-a44a-8501b7b1aefa"}
 
     response_id = post.json()['id']
