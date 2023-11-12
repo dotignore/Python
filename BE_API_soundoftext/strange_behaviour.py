@@ -1,3 +1,26 @@
+# C:\Users\hc158\GitHub\Python\BE_API_soundoftext\Python\Scripts\python.exe C:/Users/hc158/GitHub/Python/BE_API_soundoftext/strange_behaviour.py
+# ============ Load the JSON data parser start =================
+# - Language In: en-US
+# - Language Out: uk-UA
+# - Silent: 1500
+# - Lines_In: World, Jacket, Radio, Bag
+# ============ Load the JSON data parser finish =================
+# ========== Start translate text ==========
+# - Lines_out ['Світ', 'Куртка', 'Радіо', 'Мішок']
+# ###############################################
+# lang en-US, lines ['World', 'Jacket', 'Radio', 'Bag'], lang uk-UA, lines ['Світ', 'Куртка', 'Радіо', 'Мішок'], silent 1500
+# ###############################################
+# qqq: en-US
+# www: ['World', 'Jacket', 'Radio', 'Bag']
+# eee: uk-UA
+# rrr: ['Світ', 'Куртка', 'Радіо', 'Мішок']
+# ttt: 1500
+# 1qqq def - Silent: 1500
+# ============================================================
+#
+# Process finished with exit code 0
+
+
 import requests
 import json
 from googletrans import Translator
