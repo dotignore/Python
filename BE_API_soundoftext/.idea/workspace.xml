@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd88897d-7580-4780-9e6f-957cf72cfb36" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/main_refactor1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dwld/Jacket_en.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dwld/Radio_en.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dwld/World_en.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/json_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/json_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_refactor.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_refactor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +130,7 @@
       <workItem from="1698909598176" duration="10618000" />
       <workItem from="1699217888712" duration="28117000" />
       <workItem from="1699708819831" duration="16204000" />
-      <workItem from="1699743071433" duration="1728000" />
+      <workItem from="1699743071433" duration="2451000" />
     </task>
     <servers />
   </component>

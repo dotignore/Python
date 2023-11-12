@@ -39,7 +39,7 @@ def api_soundoftext_com(lang_in=None, lines_in=None, silent=None, lang_out=None,
     print(f"def - Silent: {silent}")  # Silent: 1500
 
     print(f"def - lang_out: {lang_out}")  # Out Language: uk-UA
-    print(f"def - lines_out: {lines_out}")  # Lines: World, Jacket, Radio, Bag
+    print(f"def - lines_out: {lines_out}")  # Lines: Світ, Куртка, Радіо, Мішок
     print(f"def - Silent: {silent}")  # Silent: 1500
 
     print('============================================================')
@@ -71,7 +71,7 @@ lines_out = translator(lang_in_associated, lang_out_associated, lines_in)
 print(f"- Lines_out {lines_out}")
 
 print(f"###############################################")
-print(f"lang {lang_in}, lines {lines_in}, silent {silent}")       # lang uk-UA, lines ['Світ', 'Куртка', 'Радіо', 'Мішок'], silent 1500
+print(f"lang {lang_in}, lines {lines_in}, silent {silent}")         # lang en-US, lines ['World', 'Jacket', 'Radio', 'Bag'], silent 1500
 print(f"###############################################")
 api_soundoftext_com(lang_in, lines_in, silent)
 
