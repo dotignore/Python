@@ -7,7 +7,7 @@ json_data = '''
         "World",
         "Jacket",
         "Radio",
-        "Bag"
+        "Bag" 
     ]                  
 }
 '''

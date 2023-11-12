@@ -1,9 +1,18 @@
+def api_soundoftext_com(lang1, lang2=None, lang3=None):
+    if lang2 is not None:
+        # Process the first case with lang1 and lang2
+        print(f"Processing first case with lang1: {lang1}, lang2: {lang2}")
 
+    if lang3 is not None:
+        # Process the second case with lang1 and lang3
+        print(f"Processing second case with lang1: {lang1}, lang3: {lang3}")
 
+lang2="Spanish"
+lang3="French"
 
-
-
-
+# Example usage:
+api_soundoftext_com("English", lang2)
+api_soundoftext_com("English", lang3)
 
 # ============== JSON DATA  ==============
 

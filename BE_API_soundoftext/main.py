@@ -244,8 +244,7 @@ for item in output_lines:
 
     print(f'Start GET Request')
     get = requests.get(
-        "https://api.soundoftext.com/sounds/" + response_id + "",
-        headers={"Content-Type": "application/json"},
+        "https://api.soundoftext.com/sounds/" + response_id + "", headers={"Content-Type": "application/json"},
     )
     # print(get.text) # displays the result body.
     # {"status":"Done","location":"https://files.soundoftext.com/d622f420-0ad9-11ee-a44a-8501b7b1aefa.mp3"}

@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd88897d-7580-4780-9e6f-957cf72cfb36" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/main_refactor1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dwld/Bag-ua.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dwld/Jacket-ua.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dwld/Radio-ua.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dwld/World-ua.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dwld/Jacket_en.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dwld/Radio_en.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dwld/World_en.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/json_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/json_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_refactor.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_refactor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +41,15 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hc158/GitHub/Python/BE_API_soundoftext&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hc158\GitHub\Python\BE_API_soundoftext" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.main_refactor">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BE_API_soundoftext" />
@@ -112,8 +120,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main_refactor" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -128,7 +136,9 @@
       <workItem from="1698605592776" duration="15233000" />
       <workItem from="1698785973856" duration="7052000" />
       <workItem from="1698909598176" duration="10618000" />
-      <workItem from="1699217888712" duration="12402000" />
+      <workItem from="1699217888712" duration="28117000" />
+      <workItem from="1699708819831" duration="16204000" />
+      <workItem from="1699743071433" duration="1728000" />
     </task>
     <servers />
   </component>
@@ -140,15 +150,21 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/BE_API_soundoftext$test.coverage" NAME="test Coverage Results" MODIFIED="1698960623106" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BE_API_soundoftext$main.coverage" NAME="main Coverage Results" MODIFIED="1699292907208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BE_API_soundoftext$main_refactor.coverage" NAME="main_refactor Coverage Results" MODIFIED="1699302679745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BE_API_soundoftext$test.coverage" NAME="test Coverage Results" MODIFIED="1699730317390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BE_API_soundoftext$main.coverage" NAME="main Coverage Results" MODIFIED="1699477143880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BE_API_soundoftext$main_refactor.coverage" NAME="main_refactor Coverage Results" MODIFIED="1699804181764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
