@@ -35,13 +35,6 @@ def api_soundoftext_com(lang_in=None, lang_out=None, lines_in=None, lines_out=No
     # print(f"- Lines In: {lines_in}")  # Lines: World, Jacket, Radio, Bag
     # print(f"- Lines In: {lines_out}")  # Lines: World, Jacket, Radio, Bag
 
-    if lines_in is None:
-        print("Error: 'lines_in' is not defined or is None.")
-        return
-    if not isinstance(lines_in, list):
-        print("Error: 'lines_in' is not a list.")
-        return
-    
     for line in lines_in:
 #        print(f'\ttest input words in cycle = {line}')
 

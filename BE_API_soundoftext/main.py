@@ -196,6 +196,10 @@ print('Finish translate from EN to UK input.txt => output.txt\n')
 
 
 
+
+
+
+
 # Read input.txt and output.txt files
 
 with open('input.txt', 'r', encoding='utf-8') as input_file:
@@ -230,11 +234,9 @@ for item in output_lines:
         headers={"Content-Type": "application/json"},
     )
 
-    print(post.text)  # displays the result body.
-    # {"success":true,"id":"d622f420-0ad9-11ee-a44a-8501b7b1aefa"}
-
+    print(post.text)  # displays the result body.       # {"success":true,"id":"d622f420-0ad9-11ee-a44a-8501b7b1aefa"}
     response_id = post.json()['id']
-    # print(response_id)
+    print(f"{response_id}")                             # print e162af40-48a8-11ed-a44a-8501b7b1aefa
 
     print(f'Finish POST Request\n')
 
@@ -251,9 +253,8 @@ for item in output_lines:
 
     response_json = get.json()
     url = response_json["location"]
-    print(f'{url}')
+    print(f'{url}')                         # https://files.soundoftext.com/d622f420-0ad9-11ee-a44a-8501b7b1aefa.mp3
     print(f'Finish GET Request\n')
-    # https://files.soundoftext.com/d622f420-0ad9-11ee-a44a-8501b7b1aefa.mp3
 
 # ==== GET Request ====
 
