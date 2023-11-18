@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cd88897d-7580-4780-9e6f-957cf72cfb36" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/json_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/json_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dwld/%D0%9C%D1%96%D1%88%D0%BE%D0%BA_en.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_refactor.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_refactor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_refactor1.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_refactor1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -182,7 +181,7 @@
       <workItem from="1699708819831" duration="16204000" />
       <workItem from="1699743071433" duration="19540000" />
       <workItem from="1700032148022" duration="6490000" />
-      <workItem from="1700081919988" duration="4361000" />
+      <workItem from="1700081919988" duration="8580000" />
     </task>
     <servers />
   </component>
@@ -216,23 +215,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>218</line>
+          <line>223</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>216</line>
+          <line>221</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>229</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>230</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -242,6 +231,6 @@
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$strange_behaviour.coverage" NAME="strange_behaviour Coverage Results" MODIFIED="1699822704400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$main_refactor1.coverage" NAME="main_refactor1 Coverage Results" MODIFIED="1699825390060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$main.coverage" NAME="main Coverage Results" MODIFIED="1699477143880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BE_API_soundoftext$main_refactor.coverage" NAME="main_refactor Coverage Results" MODIFIED="1700082855549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BE_API_soundoftext$main_refactor.coverage" NAME="main_refactor Coverage Results" MODIFIED="1700340435333" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -59,13 +59,11 @@ def api_soundoftext_com(func_lang_in, func_lang_out, func_lines_in, func_lines_o
             print(f"lang: {lang}")
             print(f"lines: {lines}")
 
-
         if i == 1:
             lang = func_lang_out
             lines = func_lines_out
             print(f"lang: {lang}")
             print(f"lines: {lines}")
-
 
 # 1 # 1 # 1 # 1 # 1 #
 # Read input.txt and output.txt files
@@ -83,12 +81,13 @@ def api_soundoftext_com(func_lang_in, func_lang_out, func_lines_in, func_lines_o
                 lang = 'uk-UA'
 
 
-
-
+        if i == 0:
+            for line in lines:
+                print()
+        else:
 
 # ==== POST Request Start ====
 
-        for line in lines:
             print(f'Start POST Request')
 
             post = requests.post(

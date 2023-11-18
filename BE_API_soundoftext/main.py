@@ -208,15 +208,29 @@ with open('input.txt', 'r', encoding='utf-8') as input_file:
 with open('output.txt', 'r', encoding='utf-8') as output_file:
     output_lines = output_file.read().splitlines()
 
+
+
+
+
+
+
 # Create a dictionary to map input to output
 mapping = dict(zip(output_lines, input_lines))
 
 # Print each line
 for item in output_lines:
-
     word = item.strip()
     print(f'{item.strip()}\n')  # strip() removes any leading or trailing whitespace
     lang = 'uk-UA'
+
+
+
+
+
+
+
+
+
 
 # ==== POST Request ====
 
