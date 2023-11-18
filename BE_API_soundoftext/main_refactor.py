@@ -14,44 +14,16 @@ def translator(lang_in_associated, lang_out_associated, lines_in):
         translation = translator.translate(text, src=lang_in_associated, dest=lang_out_associated)
         return translation.text
 
-    #print(f"translations_in {lines_in}")
     lines_out = [translate_to(line) for line in lines_in]
-    #print(f"translations_out {lines_out}")
 
     return lines_out
     #print(f'========== Finish translate text ==========')
+
 # ============  translate text lang_in => lang_to  ============
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def api_soundoftext_com(func_lang_in, func_lang_out, func_lines_in, func_lines_out, func_lang_in_associated, func_lang_out_associated, func_silent):
-    print(f"func_lang_in: {func_lang_in}")      # en-US
-    print(f"func_lang_out: {func_lang_out}")    # uk-UA
-    print(f"func_lines_in: {func_lines_in}")    # Lines: World, Jacket, Radio, Bag
-    print(f"func_lines_out: {func_lines_out}")  # Lines: Світ, Куртка, Радіо, Мішок
-    print(f"func_silent: {func_silent}")        # func_silent: 1500
-    print('============================================================')
-
-    #func_lang_in, func_lang_out, func_lines_in, func_lines_out, func_lang_in_associated, func_lang_out_associated, func_silent
 
     for i in range(2):
-
-        # func_lang_in, func_lang_out
-        # func_lines_in, func_lines_out
-        # func_lang_in_associated, func_lang_out_associated
-        # func_silent
 
         if i == 0:
             lang = func_lang_in
@@ -65,7 +37,6 @@ def api_soundoftext_com(func_lang_in, func_lang_out, func_lines_in, func_lines_o
             print(f"lang: {lang}")
             print(f"lines: {lines}")
 
-# 1 # 1 # 1 # 1 # 1 #
 # Read input.txt and output.txt files
         if i == 1:
 
@@ -79,7 +50,6 @@ def api_soundoftext_com(func_lang_in, func_lang_out, func_lines_in, func_lines_o
                 line = item.strip()
                 print(f'{item.strip()}\n')  # strip() removes any leading or trailing whitespace
                 lang = 'uk-UA'
-
 
         if i == 0:
             for line in lines:
@@ -102,8 +72,6 @@ def api_soundoftext_com(func_lang_in, func_lang_out, func_lines_in, func_lines_o
                 }),
                 headers={"Content-Type": "application/json"},
             )
-            # {"success":true,          "id":"ecfd7250-4a2d-11ed-a44a-8501b7b1aefa"}
-            # {"success":false,        "message":"SoundRequest validation failed: voice: `en` is not a valid enum value for path `voice`."}
 
             print(
                 f"{post.text}")  # displays the result body.        # print {"success":true,"id":"d622f420-0ad9-11ee-a44a-8501b7b1aefa"}
@@ -131,7 +99,6 @@ def api_soundoftext_com(func_lang_in, func_lang_out, func_lines_in, func_lines_o
 
 # ==== GET Request ====
 
-# 1 # 1 # 1 # 1 # 1 #
             if i == 0:
 # ==== get EN name_file.mp3 ====
 
@@ -167,16 +134,13 @@ def api_soundoftext_com(func_lang_in, func_lang_out, func_lines_in, func_lines_o
 
 # ==== get EN name.mp3 Finish ====
 
-# 1 # 1 # 1 # 1 # 1 #
-            if i == 1:
 # ==== get name_file.mp3 ====
-
+            if i == 1:
                 output_value = mapping.get(item, "Not Found")
                 print(f'Rename file {item}_ua.mp3 -> {output_value}_ua.mp3')
 
                 filename = output_value + "-ua.mp3"
 # ==== get name.mp3 ====
-
 
 # ==== save name.mp3 ====
 
@@ -203,10 +167,8 @@ def api_soundoftext_com(func_lang_in, func_lang_out, func_lines_in, func_lines_o
             # "Run as administrator." console
             # setx /m PATH "C:\ffmpeg\bin;%PATH%"
 
-            # FUNCOTION example send paramerer
-
             print(f'Start add silence name_file.mp3')
-# 1 # 1 # 1 # 1 # 1 #
+
             if i == 0:
                 def add_silence(input_file, output_file):
                     audio = AudioSegment.from_file(input_file, format="mp3")
@@ -221,14 +183,8 @@ def api_soundoftext_com(func_lang_in, func_lang_out, func_lines_in, func_lines_o
 
 # ==== add silence to start file ====
 
-
-
     print('============================================================')
 
-
-
-
-print('============ Load the JSON data parser start =================')
 # Load the JSON data
 parsed_data = json.loads(json_data)
 
@@ -237,30 +193,13 @@ lang_in = parsed_data["lang_in"]
 lang_out = parsed_data["lang_out"]
 silent = parsed_data["silent"]
 lines_in = parsed_data["lines_in"]
-
-# Print the values
-print(f"- Language In: {lang_in}")        # In Language: en-US
-print(f"- Language Out: {lang_out}")      # Out Language: uk-UA
-print(f"- Silent: {silent}")              # Silent: 1500
-print(f"- Lines_In: {', '.join(lines_in)}")  # Lines: World, Jacket, Radio, Bag
-print('============ Load the JSON data parser finish =================')
 # ============  json_data.py  ============
+
 # ============  association_langs.py  ============
 # Lang assosiace                def translator
 lang_in_associated = get_output_language(lang_in)               # lang_in_associated en
 lang_out_associated = get_output_language(lang_out)             # lang_out_associated uk
 lines_out = translator(lang_in_associated, lang_out_associated, lines_in)
-print(f"- Lines_out {lines_out}")
-
-# print(f"###############################################")
-# print(f"lang {lang_in}, lines {lines_in}, silent {silent}")         # lang en-US, lines ['World', 'Jacket', 'Radio', 'Bag'], silent 1500
-# print(f"###############################################")
-# api_soundoftext_com(lang_in, lines_in, silent)
-#
-# print(f"###############################################")
-# print(f"lang {lang_out}, lines {lines_out}, silent {silent}")       # lang uk-UA, lines ['Світ', 'Куртка', 'Радіо', 'Мішок'], silent 1500
-# print(f"###############################################")
-#api_soundoftext_com(lang_out, lines_out, silent)
 
 print(f"###############################################")
 print(f"lang_in {lang_in}, lines_in {lines_in}, lang {lang_out}, lines_out {lines_out}, silent {silent}")       # lang uk-UA, lines ['Світ', 'Куртка', 'Радіо', 'Мішок'], silent 1500

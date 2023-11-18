@@ -137,12 +137,6 @@ for line in lines:
 
     print('============================================================')
 
-
-
-
-
-
-
 # ==== Start translate from EN input.txt to UK output.txt ====
 
 # Doc works with translate lib "googletrans"
@@ -166,9 +160,6 @@ with open('input.txt', 'r', encoding='utf-8') as file:
 # AttributeError: 'NoneType' object has no attribute 'group'
 translations = [translate_to(line.strip()) for line in lines]
 
-# print("Translation of first element:")
-# print(translations[0])
-#
 # print("\nTranslation of last element:")
 # print(translations[3])
 
@@ -187,19 +178,6 @@ print('Finish translate from EN to UK input.txt => output.txt\n')
 
 # ==== SFinish translate from EN input.txt to UK output.txt ====
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Read input.txt and output.txt files
 
 with open('input.txt', 'r', encoding='utf-8') as input_file:
@@ -207,12 +185,6 @@ with open('input.txt', 'r', encoding='utf-8') as input_file:
 
 with open('output.txt', 'r', encoding='utf-8') as output_file:
     output_lines = output_file.read().splitlines()
-
-
-
-
-
-
 
 # Create a dictionary to map input to output
 mapping = dict(zip(output_lines, input_lines))
@@ -222,15 +194,6 @@ for item in output_lines:
     word = item.strip()
     print(f'{item.strip()}\n')  # strip() removes any leading or trailing whitespace
     lang = 'uk-UA'
-
-
-
-
-
-
-
-
-
 
 # ==== POST Request ====
 
