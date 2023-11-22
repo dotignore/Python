@@ -4,11 +4,10 @@ json_data = '''
     "lang_out": "uk-UA",
     "silent": 1500,
     "lines_in": [
+        "World",
+        "Jacket",
+        "Radio",
         "Bag" 
     ]                  
 }
 '''
-
-#        "World",
-#        "Jacket",
-#        "Radio",

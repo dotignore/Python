@@ -63,6 +63,16 @@ for line in lines:
 
 # ==== GET Request ====
 
+
+
+
+
+
+
+
+
+
+
 # ==== get name_file.mp3 ====
 
     print(f'Start get name_file.mp3 from header')
@@ -144,6 +154,21 @@ for line in lines:
 
 print('Start translate from EN input.txt to UK output.txt')
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 from googletrans import Translator
 
 def translate_to(text):
@@ -176,7 +201,20 @@ print("Translations written to output.txt")
 
 print('Finish translate from EN to UK input.txt => output.txt\n')
 
-# ==== SFinish translate from EN input.txt to UK output.txt ====
+# ==== Finish translate from EN input.txt to UK output.txt ====
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Read input.txt and output.txt files
 
