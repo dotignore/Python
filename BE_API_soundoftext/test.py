@@ -1,16 +1,39 @@
+import logging
+
+# Configure the logging settings
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    handlers=[
+                        logging.FileHandler("example.log"),  # Log to a file
+                        logging.StreamHandler()  # Log to the console
+                    ])
+
+# Create a logger
+logger = logging.getLogger(__name__)
+
+def main():
+    logger.debug('This is a debug message.')
+    logger.info('This is an information message.')
+    logger.warning('This is a warning message.')
+    logger.error('This is an error message.')
+    logger.critical('This is a critical message.')
+
+if __name__ == "__main__":
+    main()
 
 
-for i in range(2):
-    if i == 0:
-        lang = 1
-    elif i == 1:
-        lang = 2
-
-    # Код, который нужно выполнить только один раз
-    for ttt in [lang]:
-        print(f"lang: {ttt}")
-
-# Остальной код после цикла
+# for i in range(2):
+#     if i == 0:
+#         lang = 1
+#     elif i == 1:
+#         lang = 2
+#
+#     # Код, который нужно выполнить только один раз
+#     for ttt in [lang]:
+#         print(f"lang: {ttt}")
+#
+# # Остальной код после цикла
 
 
 
