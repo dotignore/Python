@@ -5,6 +5,8 @@ from association_langs import get_output_language
 from json_data import json_data
 from pydub import AudioSegment
 
+# https://py-googletrans.readthedocs.io/en/latest/
+
 # ============  translate text lang_in => lang_to  association_langs.py ============
 def translator(lang_in_associated, lang_out_associated, lines_in):
 
