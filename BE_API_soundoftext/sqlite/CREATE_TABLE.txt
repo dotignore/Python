@@ -5,19 +5,131 @@ CREATE TABLE Languages (
 );
 
 
-CREATE TABLE Words (
-    word_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    word_text TEXT NOT NULL
+CREATE TABLE Words_en (
+    WordID INTEGER PRIMARY KEY AUTOINCREMENT,
+    LanguageID INTEGER NOT NULL,
+    Word TEXT NOT NULL,
+    AccessCount INTEGER DEFAULT 0,
+    AudioPath TEXT
 );
 
-CREATE TABLE Translations (
-    translation_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    word_id INTEGER NOT NULL,
-    language_id INTEGER NOT NULL,
-    translation_text TEXT NOT NULL,
-    FOREIGN KEY (word_id) REFERENCES Words(word_id),
-    FOREIGN KEY (language_id) REFERENCES Languages(language_id)
+
+CREATE TABLE Words_ru (
+    Word TEXT NOT NULL,
+    AccessCount INTEGER DEFAULT 0,
+    AudioPath TEXT
 );
+
+
+CREATE TABLE Translations (
+    "af" INTEGER,
+    "sq" INTEGER,
+    "am" INTEGER,
+    "ar" INTEGER,
+    "hy" INTEGER,
+    "az" INTEGER,
+    "eu" INTEGER,
+    "be" INTEGER,
+    "bn" INTEGER,
+    "bs" INTEGER,
+    "bg" INTEGER,
+    "ca" INTEGER,
+    "ceb" INTEGER,
+    "ny" INTEGER,
+    "zh_cn" INTEGER,
+    "zh_tw" INTEGER,
+    "co" INTEGER,
+    "hr" INTEGER,
+    "cs" INTEGER,
+    "da" INTEGER,
+    "nl" INTEGER,
+    "en" INTEGER,
+    "eo" INTEGER,
+    "et" INTEGER,
+    "tl" INTEGER,
+    "fi" INTEGER,
+    "fr" INTEGER,
+    "fy" INTEGER,
+    "gl" INTEGER,
+    "ka" INTEGER,
+    "de" INTEGER,
+    "el" INTEGER,
+    "gu" INTEGER,
+    "ht" INTEGER,
+    "ha" INTEGER,
+    "haw" INTEGER,
+    "he" INTEGER,
+    "hi" INTEGER,
+    "hmn" INTEGER,
+    "hu" INTEGER,
+    "is" INTEGER,
+    "ig" INTEGER,
+    "id" INTEGER,
+    "ga" INTEGER,
+    "it" INTEGER,
+    "ja" INTEGER,
+    "jw" INTEGER,
+    "kn" INTEGER,
+    "kk" INTEGER,
+    "km" INTEGER,
+    "ko" INTEGER,
+    "ku" INTEGER,
+    "ky" INTEGER,
+    "lo" INTEGER,
+    "la" INTEGER,
+    "lv" INTEGER,
+    "lt" INTEGER,
+    "lb" INTEGER,
+    "mk" INTEGER,
+    "mg" INTEGER,
+    "ms" INTEGER,
+    "ml" INTEGER,
+    "mt" INTEGER,
+    "mi" INTEGER,
+    "mr" INTEGER,
+    "mn" INTEGER,
+    "my" INTEGER,
+    "ne" INTEGER,
+    "no" INTEGER,
+    "or" INTEGER,
+    "ps" INTEGER,
+    "fa" INTEGER,
+    "pl" INTEGER,
+    "pt" INTEGER,
+    "pa" INTEGER,
+    "ro" INTEGER,
+    "ru" INTEGER,
+    "sm" INTEGER,
+    "gd" INTEGER,
+    "sr" INTEGER,
+    "st" INTEGER,
+    "sn" INTEGER,
+    "sd" INTEGER,
+    "si" INTEGER,
+    "sk" INTEGER,
+    "sl" INTEGER,
+    "so" INTEGER,
+    "es" INTEGER,
+    "su" INTEGER,
+    "sw" INTEGER,
+    "sv" INTEGER,
+    "tg" INTEGER,
+    "ta" INTEGER,
+    "te" INTEGER,
+    "th" INTEGER,
+    "tr" INTEGER,
+    "uk" INTEGER,
+    "ur" INTEGER,
+    "ug" INTEGER,
+    "uz" INTEGER,
+    "vi" INTEGER,
+    "cy" INTEGER,
+    "xh" INTEGER,
+    "yi" INTEGER,
+    "yo" INTEGER,
+    "zu" INTEGER
+);
+
 
 ---------------------------------------------------------------------------
 
@@ -130,12 +242,101 @@ INSERT INTO Languages (language_code, language_name) VALUES
 ('yo', 'Yoruba'),
 ('zu', 'Zulu');
 
+======================================================================
+
+add words
 
 
--- Добавление слова
-INSERT INTO Words (word_text) VALUES ('Hello');
 
--- Добавление переводов для слова "Hello"
-INSERT INTO Translations (word_id, language_id, translation_text) VALUES
-(1, 2, 'Привет'), -- Предполагая, что 2 - это ID русского языка
-(1, 3, 'Hola');   -- Предполагая, что 3 - это ID испанского языка
+import sqlite3
+from sqlite3 import Error
+
+def create_connection(db_file):
+    """Create a database connection to a SQLite database."""
+    conn = None
+    try:
+        conn = sqlite3.connect(db_file)
+        print(sqlite3.version)
+    except Error as e:
+        print(e)
+    return conn
+
+def create_table(conn, create_table_sql):
+    """Create a table from the create_table_sql statement."""
+    try:
+        c = conn.cursor()
+        c.execute(create_table_sql)
+    except Error as e:
+        print(e)
+
+def insert_word(conn, word):
+    """Insert a new word into the Words_en table."""
+    sql = ''' INSERT INTO Words_en(Word, AccessCount, AudioPath)
+              VALUES(?,0,NULL) '''
+    cur = conn.cursor()
+    cur.execute(sql, (word,))
+    return cur.lastrowid
+
+def main():
+    database = r'C:\Users\hc158\GitHub\Python\BE_API_soundoftext\sqlite\translate.db'
+
+    # SQL for creating the Words_en table without WordID
+    sql_create_words_en_table = """CREATE TABLE IF NOT EXISTS Words_en (
+                                    Word TEXT NOT NULL,
+                                    AccessCount INTEGER DEFAULT 0,
+                                    AudioPath TEXT
+                                );"""
+
+    # Create a database connection
+    conn = create_connection(database)
+
+    # Create the Words_en table
+    if conn is not None:
+        create_table(conn, sql_create_words_en_table)
+
+        # Read words from file and insert into the Words_en table
+        words_file_path = r'C:\Users\hc158\GitHub\Python\BE_API_soundoftext\sqlite\words_en.txt'
+        with open(words_file_path, 'r') as words_file:
+            for word in words_file:
+                word = word.strip()  # Remove whitespace
+                if word:  # Check if the word is not empty
+                    insert_word(conn, word)
+        conn.commit()  # Commit the changes
+        print("Words have been added to the database.")
+    else:
+        print("Error! cannot create the database connection.")
+
+    # Close the connection to the database
+    if conn:
+        conn.close()
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+
+======================================================================
+add indec to table
+
+import sqlite3
+
+# Подключение к базе данных
+conn = sqlite3.connect(r'C:\Users\hc158\GitHub\Python\BE_API_soundoftext\sqlite\translate.db')
+cursor = conn.cursor()
+
+# Создание запроса для вставки данных
+insert_query = "INSERT INTO Translations (en) VALUES (?)"
+
+# Генерация и вставка значений от 1 до 466550
+for i in range(1, 466551):
+    cursor.execute(insert_query, (i,))
+
+# Сохранение изменений и закрытие соединения
+conn.commit()
+conn.close()
+
+print("Данные успешно добавлены в колонку 'en'.")
+
+
