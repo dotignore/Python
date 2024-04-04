@@ -339,4 +339,31 @@ conn.close()
 
 print("Данные успешно добавлены в колонку 'en'.")
 
+======================================================================
+
+import sqlite3
+
+# Встановлення шляху до вашої бази даних
+db_path = "C:/Users/hc158/GitHub/Python/BE_API_soundoftext/sqlite/translate.db"
+
+# Підключення до бази даних
+conn = sqlite3.connect(db_path)
+cursor = conn.cursor()
+
+# Створення SQL запиту для вставки пустих записів
+insert_query = """
+INSERT INTO Words_ru (Word, AccessCount, AudioPath) VALUES (?, ?, ?);
+"""
+
+# Виконання запиту в циклі
+for _ in range(466550):
+    # Вставка запису з пустими значеннями для Word та AudioPath і 0 для AccessCount
+    cursor.execute(insert_query, ("", 0, ""))
+
+# Збереження змін і закриття підключення
+conn.commit()
+conn.close()
+
+print("Записи успішно додані.")
+
 

@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd88897d-7580-4780-9e6f-957cf72cfb36" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/db_file_2_file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db_language_data_en.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db_translate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db_temp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connect_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_connect.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db_file_2_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_file_2_file.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sqlite/CREATE_TABLE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite/CREATE_TABLE.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sqlite/en_words.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sqlite/translate.db" beforeDir="false" afterPath="$PROJECT_DIR$/sqlite/translate.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqlite/translate.db-journal" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +46,7 @@
       <recent name="C:\Users\hc158\GitHub\Python\BE_API_soundoftext" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.db_file_2_file">
+  <component name="RunManager" selected="Python.db_temp">
     <configuration name="db_connect (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BE_API_soundoftext" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -63,28 +61,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/db_connect.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="db_connect" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="BE_API_soundoftext" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\hc158\GitHub\Python\BE_API_soundoftext\db_connect.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -137,6 +113,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="db_temp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BE_API_soundoftext" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/db_temp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="db_translate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="BE_API_soundoftext" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -161,11 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.db_temp" />
         <item itemvalue="Python.db_file_2_file" />
         <item itemvalue="Python.db_translate" />
         <item itemvalue="Python.db_connect (1)" />
         <item itemvalue="Python.db_language_data_en" />
-        <item itemvalue="Python.db_connect" />
       </list>
     </recent_temporary>
   </component>
@@ -188,7 +186,7 @@
       <workItem from="1700687729202" duration="6597000" />
       <workItem from="1700755411136" duration="1848000" />
       <workItem from="1701369371553" duration="604000" />
-      <workItem from="1710965139371" duration="24065000" />
+      <workItem from="1710965139371" duration="40075000" />
     </task>
     <servers />
   </component>
@@ -213,6 +211,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BE_API_soundoftext$db_temp.coverage" NAME="db_temp Coverage Results" MODIFIED="1712264002368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$test.coverage" NAME="test Coverage Results" MODIFIED="1701070400852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$strange_behaviour.coverage" NAME="strange_behaviour Coverage Results" MODIFIED="1699822704400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$main_refactor1.coverage" NAME="main_refactor1 Coverage Results" MODIFIED="1701071142923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -220,7 +219,7 @@
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$main.coverage" NAME="main Coverage Results" MODIFIED="1700755619657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$main_refactor.coverage" NAME="main_refactor Coverage Results" MODIFIED="1710965321283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$db_translate.coverage" NAME="db_translate Coverage Results" MODIFIED="1712096731552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BE_API_soundoftext$db_file_2_file.coverage" NAME="db_file_2_file Coverage Results" MODIFIED="1712141723338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BE_API_soundoftext$db_file_2_file.coverage" NAME="db_file_2_file Coverage Results" MODIFIED="1712179351073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$main_refactor2.coverage" NAME="main_refactor2 Coverage Results" MODIFIED="1700514654155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$language_data_en.coverage" NAME="language_data_en Coverage Results" MODIFIED="1712087748971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BE_API_soundoftext$db_connect__1_.coverage" NAME="db_connect (1) Coverage Results" MODIFIED="1712091567120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
