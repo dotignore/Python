@@ -1,55 +1,23 @@
-from googletrans import Translator
-from datetime import datetime
-import time
+import re
 
-def translate_words():
-    source_file_path = "C:/Users/hc158/GitHub/Python/BE_API_soundoftext/sqlite/words_en_20k.txt"
-    target_file_path = "C:/Users/hc158/GitHub/Python/BE_API_soundoftext/sqlite/translated_words.txt"
+# Define the paths to the input and output files
+input_file_path = 'C:/Users/hc158/GitHub/Python/BE_API_soundoftext/sqlite/rutraker/05_edit.txt'
+output_file_path = 'C:/Users/hc158/GitHub/Python/BE_API_soundoftext/sqlite/rutraker/05_format.txt'
 
-    # Инициализация переводчика
-    translator = Translator()
+# Open the input file and read the contents
+with open(input_file_path, 'r', encoding='utf-8') as input_file:
+    text = input_file.read()
 
-    try:
-        with open(target_file_path, 'r', encoding='utf-8') as file:
-            last_translated_word = file.readlines()[-1].split('\t')[1].split(' - ')[0]
-    except Exception:
-        last_translated_word = None
+# Transform the content into a single line
+single_line_text = ' '.join(text.split())
 
-    start_translation = last_translated_word is None
+# Adjust the regular expression to match words with hyphens, periods, and parentheses
+# This pattern is designed to match a broader range of words before the [transcription]
+# It now accommodates words with hyphens, periods, and optionally matches words with parentheses
+formatted_text = re.sub(r' ([\w\.\-]+(\([\w\.\-]+\))? \[\S+\]) ', r'\n\1 ', single_line_text)
 
-    with open(source_file_path, 'r', encoding='utf-8') as file:
-        english_words = file.read().splitlines()
+# Write the formatted text to the output file
+with open(output_file_path, 'w', encoding='utf-8') as output_file:
+    output_file.write(formatted_text)
 
-    translated_count = 0
-
-    with open(target_file_path, 'a', encoding='utf-8') as file:
-        for word in english_words:
-            if not start_translation and word == last_translated_word:
-                start_translation = True
-                continue
-            if start_translation:
-                try:
-                    current_time = datetime.now().strftime("%H:%M:%S")
-                    translated_word = translator.translate(word, src='en', dest='ru').text
-                    file.write(f"{current_time}\t{word} - {translated_word}\n")
-                    print(f"{current_time}\t{word} - {translated_word}")
-                    translated_count += 1
-                    time.sleep(0.5)  # Пауза между запросами
-                except Exception as e:
-                    print(f"Ошибка при переводе слова '{word}': {e}")
-                    break  # Прерываем цикл при возникновении ошибки
-            if translated_count >= 1500:  # Приблизительное количество слов за 25 минут
-                break
-
-def main():
-    while True:
-        start_time = time.time()
-        translate_words()
-        elapsed_time = time.time() - start_time
-        if elapsed_time < 1500:  # 25 минут = 1500 секунд
-            time_to_wait = 1500 - elapsed_time
-            print(f"Ожидание {time_to_wait} секунд до следующего перезапуска...")
-            time.sleep(time_to_wait)
-
-if __name__ == "__main__":
-    main()
+print("Transformation complete. The content has been reformatted and written to the output file.")
